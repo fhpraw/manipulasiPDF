@@ -1,0 +1,4 @@
+n=$(gs -q -dNODISPLAY -c "($1) (r) file runpdfbegin pdfpagecount = quit")
+for (( i = 1; i <= $n; i++)); do
+    gs -dQUITE -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -dFirstPage=$i -dLastPage=$i -sOutputFile=${1%.pdf}_page$i.pdf $1
+done
